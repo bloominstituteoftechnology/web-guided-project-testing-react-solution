@@ -1,37 +1,31 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import MissionForm from "./MissionForm";
+import React from 'react';
+import { fireEvent, render, screen } from "@testing-library/react";
+import MissionForm from './MissionForm';
 
-test("Mission Form renders correctly", () => {
-  const mockGetData = jest.fn();
-  const { getByText, queryByText } = render(
-    <MissionForm getData={mockGetData} isFetchingData={false} />
-  );
-
-  // test that the button is rendered, and the loading state is not
-  getByText(/get data/i);
-  expect(queryByText(/we are fetching data/i)).toBeNull();
-
-  // line 12 is shorthand for this:
-  // expect(getByText(/get data/i)).toBeInTheDocument();
+test("MissionForm renders correctly", ()=> {
+    render(<MissionForm />);
 });
 
-test("Component trasitions to loading state when isFetchingData is true", () => {
-  const mockGetData = jest.fn();
-  const { getByText, queryByText, rerender } = render(
-    <MissionForm getData={mockGetData} isFetchingData={false} />
-  );
-
-  // test that the button is rendered, and the loading state is not
-  getByText(/get data/i);
-  expect(queryByText(/we are fetching data/i)).toBeNull();
-
-  // re-render the component becuase isFetchingData has been changed to true
-  rerender(<MissionForm getData={mockGetData} isFetchingData={true} />);
-
-  getByText(/we are fetching data/i);
-  expect(queryByText(/get data/i)).toBeNull();
+test('renders message when isFetchingData is true', ()=>{
+    render(<MissionForm isFetchingData={true}/>);
+    const value = screen.queryByText(/we are fetching data/i);
+    expect(value).not.toBeNull();
 });
 
-// TODO: add a test to test the transition from the loading state back to the resting state
-// TODO: look through this test file and list out all the functions come from RTL, and all the functions coming from Jest
+test('renders button when isFetchingData is false', ()=>{
+    render(<MissionForm isFetchingData={false}/>);
+    const value = screen.queryByRole("button");
+    expect(value).not.toBeNull();
+});
+
+test('calls getData when Button is pressed', ()=>{
+    const mockGetData = jest.fn(()=>{return("warren")});
+    render(<MissionForm getData={mockGetData}/>);
+    
+    const button = screen.getByRole("button");
+    fireEvent.click(button);
+    
+    expect(mockGetData.mock.calls.length === 1);
+    expect(mockGetData.mock.calls.length).toBe(1);
+    expect(mockGetData.mock.calls).toHaveLength(1);
+});
