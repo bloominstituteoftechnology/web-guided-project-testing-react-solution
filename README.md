@@ -1,12 +1,88 @@
-# Space X - Testing React Testing Library II
+# Sprint 3 - Module 1 : Unit Testing React Components
 
-# Testing React
+## [Training Kit](https://github.com/LambdaSchool/Full-Stack-Web-Curriculum/tree/main/03-WebApplications-II/Sprint%2003%20-%20Advanced%20Web%20Applications/Module%201%20-%20Testing%20React)
 
-### Repos
+----
 
-Starter Project Repo: https://github.com/LambdaSchool/Space-X-Web-GuidedProject
+## Objectives
 
-Solution Project Repo: (This repo 😉)
+By the end of this module, learners should be able to:
+* test React components as the props change
+* use mocks in web application tests
+* test asynchronous API calls that are made in a component
+
+----
+
+## Instructor Resources
+* 🐙 [Guided Project Starter](https://github.com/LambdaSchool/web-guided-project-testing-react)
+* 🐙 [Guided Project Solution](https://github.com/LambdaSchool/web-guided-project-testing-react-solution)
+* 🐙 [Module Project](https://github.com/LambdaSchool/React-Testing-TV-Show)
+* 🐙 [Module Project Solution](#)
+
+----
+
+## Guided Project Slack Message
+> 1. Clone without forking the following repo: *base guided project repo*
+> 2. Navigate into both the review and followAlong folders and run npm i to load dependences.
+>
+> :point_right: Technical issues spinning up the project? Please head over to the help channel!
+> :point_right: If you fall behind during lecture and wish to catch up:
+>
+> git fetch && git reset --hard origin/lecture
+>
+> :point_right: Slido event: *insert slido link*
+
+----
+
+## Guided Project Zoom Invitation:
+> Unit 3 | Sprint 1 | **Module 1: React Lifecycle**
+> _______________________________________________________
+> Zoom Link : *insert zoom link*
+> Slido: *insert slido link*
+> Guided Project: https://github.com/LambdaSchool/web-guided-project-testing-react
+> Module Project: https://github.com/LambdaSchool/React-Testing-TV-Show
+
+----
+
+## Check for Understanding Questions
+
+These are the questions used internally to check student understanding. Students will be instructed to answer these questions after the guided project. Please make sure to emphasize the concepts behind these answers.
+
+#### rerender must be run _ the initial assertion.
+* in a seperate assertion than
+* alongside
+* **after**
+* before
+
+#### What is the purpose of the following code?
+```js
+  rerender(<PhoneNumber phoneNumber={"2025550113"} />);
+```
+* to set a default value for phoneNumber
+* to render a phone number to the DOM
+* **to update phoneNumber state**
+* to run a test after a user input
+
+#### Mocks should be created _ of the test function
+* outside
+* **inside**
+* next to the spy
+* inside a loop of the test function
+
+#### What is the proper syntax to create a fake version of an object for testing?
+* useMock(object, () => () => "abcde");
+* mock(object, () => () => "abcde");
+* **jest.mock(object, () => () => "abcde");**
+* jest.spy(object, () => () => "abcde");
+
+#### What is an assertion we can make to see if a function has been called?
+* if (toHaveBeencalled(someFunction)) === TRUE {
+console.log('pass'))
+* **expect(someFunction).toHaveBeenCalled()**
+* it('has been called')
+* expect(toHaveBeenCalled, someFunction)
+
+## Guided Project Outline
 
 ### Testing prop changes
 
@@ -287,3 +363,26 @@ test("Component trasitions to loading state when isFetchingData is true", () => 
 // TODO: add a test to test the transition from the loading state back to the resting state
 // TODO: look through this test file and list out all the functions come from RTL, and all the functions coming from Jest
 ```
+
+
+### Module Project Review
+* [Testing TV Show](https://github.com/LambdaSchool/React-Testing-TV-Show)
+
+## Breakout Slack Messages
+
+----
+
+## After Class Message
+Hope you all enjoyed today's guided Lesson!
+A reminder if that office hours are from 3:30 - 4:30 Lambda Time. Don't forget to complete the days Check for Understanding and Pulse Checks! 
+
+Module Project
+https://github.com/LambdaSchool/React-Testing-TV-Show
+
+Here is a review of today's material.
+
+Key Terminology
+* 📝 *term* - [description](#)
+
+Key Concepts
+* 📝 *concept* - [description](#)
