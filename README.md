@@ -2,6 +2,8 @@
 
 ## [Training Kit](https://github.com/LambdaSchool/Full-Stack-Web-Curriculum/tree/main/03-WebApplications-II/Sprint%2003%20-%20Advanced%20Web%20Applications/Module%201%20-%20Testing%20React)
 
+### [Previous Lesson Plan](https://github.com/LambdaSchool/Space-X-Web-GuidedProject-Solution)
+
 ----
 
 ## Objectives
