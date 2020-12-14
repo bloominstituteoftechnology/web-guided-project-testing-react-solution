@@ -25,7 +25,7 @@ By the end of this module, learners should be able to:
 
 ## Guided Project Slack Message
 > 1. Clone without forking the following repo: *base guided project repo*
-> 2. Navigate into both the review and followAlong folders and run npm i to load dependences.
+> 2. Navigate into both the root folder and run npm i to load dependences.
 >
 > :point_right: Technical issues spinning up the project? Please head over to the help channel!
 > :point_right: If you fall behind during lecture and wish to catch up:
@@ -37,7 +37,7 @@ By the end of this module, learners should be able to:
 ----
 
 ## Guided Project Zoom Invitation:
-> Unit 3 | Sprint 1 | **Module 1: React Lifecycle**
+> **Unit 3 | Sprint 3 | Module 1: Unit Testing React Componentse**
 > _______________________________________________________
 > Zoom Link : *insert zoom link*
 > Slido: *insert slido link*
@@ -86,286 +86,183 @@ console.log('pass'))
 
 ## Guided Project Outline
 
-### Testing prop changes
+### Layout the week
+* Last week of frontend coding
+* Going into the last steps of creating and deploying a polished CRUD application.
 
-1. Look through the app with the students. Make sure you and they understand where the data is, where it's being fetched, where the data is being passed to, etc.
+### Layout of the Day
+* Previously we went over general techniques with testing frontend code.
+* Today we will go into the specifics of testing react components.
+* In detail, we will learn how in tests to:
+    1. Pass in data props to a component.
+    2. Pass in mock functions into a component
+    3. Test a fake api call with mocks.
+    4. Test transitions with rerendering
 
-2. Since we want to test prop changes, we need to test a component that has props. We'll start by testing the `MissionForm` component.
+### Review types of testing
+* Discuss different test types.
+* We will focus on unit tests today.
+* Discuss the use of Arrange / Act / Assert in the creation of tests.
 
-- create a `MissionForm.test.js` file
-- import React, import { render }, and import the component
-- Start building the first test (Note that we render the component and pass in props, just like we would in a parent component):
+### Tour code for the day
+* Show the result of our code in UI.
+* Tour App.js, MissionForm.js and MissionList.js
+* We will start with our simplest component first, MissionForm.
 
-```jsx
-test("Missions list shows data when rerendered with new missions data", () => {
-  const {} = render(<MissionsList error="" missions={[]} />);
-});
-```
-
-3. When we run this test, we pass in an empty state to mimick the "starting" state of the component
-4. Write some assertions for our empty/starting state ( you will need to write in the `data-testid`'s in the component as show in this repo):
-
-```jsx
-test("Missions list shows data when rerendered with new missions data", () => {
-  const { queryAllByTestId } = render(<MissionsList error="" missions={[]} />);
-
-  // assert that there are no missions listed when the component first renders
-  // queryBy, something that returns an array if more than one match ("All" query)
-  expect(queryAllByTestId("mission")).toStrictEqual([]);
-  expect(queryAllByTestId("mission")).toHaveLength(0);
-});
-```
-
-_You may want to explain why we are using `queryAllByTestId` (or even let students try and figure out what query to use 😁) - if there is no match found, a `queryBy` function will return an empty array, making it easy for us to test something that is **not** there_
-
-**Run tests to make sure they are passing. Break tests for our sanity check**
-
-4. When the `App` component finishes fetching the data for the missions, `MissionList` will receive new props. Let's add that to our test.
-
-- get the `rerender` function from where we are rendering the component: `const { queryAllByTestId, rerender } = render(...)`
-- use that function to rerender the component with new props
-
-```jsx
-test("Missions list shows data when rerendered with new missions data", () => {
-  const { queryAllByTestId, rerender } = render(
-    <MissionsList error="" missions={[]} />
-  );
-
-  // assert that there are no missions listed when the component first renders
-  // queryBy, something that returns an array if more than one match ("All" query)
-  expect(queryAllByTestId("mission")).toStrictEqual([]);
-  expect(queryAllByTestId("mission")).toHaveLength(0);
-
-  rerender(<MissionsList error="" missions={???} />);
-});
-```
-
-5. What do we pass in as the `missions` data? Build a simple array with > 1 object to pass into the prop. I usually define these outside of the test, in case I can reuse that mock data in a different test
-
+### Create a test suite for MissionForm
+* Create MissionForm.test.js.
+* Import basic items
 ```js
-const missions = [
-  {
-    mission_name: "Thaicom",
-    mission_id: "9D1B7E0",
-    manufacturers: ["Orbital ATK"],
-    payload_ids: ["Thaicom 6", "Thaicom 8"],
-    wikipedia: "https://en.wikipedia.org/wiki/Thaicom",
-    website: "http://www.thaicom.net/en/satellites/overview",
-    twitter: "https://twitter.com/thaicomplc",
-    description:
-      "Thaicom is the name of a series of communications satellites operated from Thailand, and also the name of Thaicom Public Company Limited, which is the company that owns and operates the Thaicom satellite fleet and other telecommunication businesses in Thailand and throughout the Asia-Pacific region. The satellite projects were named Thaicom by the King of Thailand, His Majesty the King Bhumibol Adulyadej, as a symbol of the linkage between Thailand and modern communications technology."
-  },
-  {
-    mission_name: "Telstar",
-    mission_id: "F4F83DE",
-    manufacturers: ["SSL"],
-    payload_ids: ["Telstar 19V", "Telstar 18V"],
-    wikipedia: "https://en.wikipedia.org/wiki/Telesat",
-    website: "https://www.telesat.com/",
-    twitter: null,
-    description:
-      "Telstar 19V (Telstar 19 Vantage) is a communication satellite in the Telstar series of the Canadian satellite communications company Telesat. It was built by Space Systems Loral (MAXAR) and is based on the SSL-1300 bus. As of 26 July 2018, Telstar 19V is the heaviest commercial communications satellite ever launched, weighing at 7,076 kg (15,600 lbs) and surpassing the previous record, set by TerreStar-1 (6,910 kg/15230lbs), launched by Ariane 5ECA on 1 July 2009."
-  }
-];
+  import React from 'react';
+  import { render, screen} from '@testing-library-react';
+  import userEvent from '@testing-library/userEvent';
+  import MissionForm from './MissionForm';
 ```
-
-Now the test will look like this:
-
-```jsx
-test("Missions list shows data when rerendered with new missions data", () => {
-  const { queryAllByTestId, rerender } = render(
-    <MissionsList error="" missions={[]} />
-  );
-
-  // assert that there are no missions listed when the component first renders
-  // queryBy, something that returns an array if more than one match ("All" query)
-  expect(queryAllByTestId("mission")).toStrictEqual([]);
-  expect(queryAllByTestId("mission")).toHaveLength(0);
-
-  rerender(<MissionsList error="" missions={missions} />);
-
-  expect(queryAllByTestId("mission")).toHaveLength(2);
-});
-```
-
-At this point you can ask something like "What other assertions could we write here?"
-
-### Using Mocks
-
-I use the TK to explain the importance of mocks. The example with the UUID library is a great example to show the why. I also explain that another use case for mocks is for async operations.
-
-1. After explaining why we use mocks, I start testing the `App` component where we are making a fetch request.
-
-- Create an `App.test.js` file
-- Add the normal imports and start a test function
-
-2. In order to test the API call easier, we have set up the async function in a separate `/api` directory. This helps us isolate the function so we can mock it. (This can also be acheived using axios' mock function - students can look that up on their own).
-
-3. `App.js` is importing a dependency! `fetchMissions`! Our test will need to import it as well so we can mock it.
-
-- `import { fetchMissions as mockFetchMissions } from "./api/fetchMissions";`
-- we rename the function so we now it's the function being mocked
-- Use `jest.mock` to mock the function - `jest.mock("./api/fetchMissions");`
-- I like to `console.log(mockFetchMissions)` and show students what we just created. Point out all the functions we can run off of this now.
-- One function to point out is `mockResolvedValueOnce`. This is a function we can call inside each test to tell the function what data is _supposed_ to be returned by the database.
-- We need to "seed" this with mocked data as well. Add this array outside of your tests, then pass it into the `mockResolvedValueOnce` function:
-
-_Note: If you want to show a really hard to find bug, then you can mock this data like the other mock data (as an array, without the object or the data property. Console log in the component where the data is being set to state and show students that we are not mocking the correct shape for the data_
-
+* Run the test runner.
+* Create base test
 ```js
-const missions = {
-  data: [
-    {
-      mission_name: "Thaicom",
-      mission_id: "9D1B7E0",
-      manufacturers: ["Orbital ATK"],
-      payload_ids: ["Thaicom 6", "Thaicom 8"],
-      wikipedia: "https://en.wikipedia.org/wiki/Thaicom",
-      website: "http://www.thaicom.net/en/satellites/overview",
-      twitter: "https://twitter.com/thaicomplc",
-      description:
-        "Thaicom is the name of a series of communications satellites operated from Thailand, and also the name of Thaicom Public Company Limited, which is the company that owns and operates the Thaicom satellite fleet and other telecommunication businesses in Thailand and throughout the Asia-Pacific region. The satellite projects were named Thaicom by the King of Thailand, His Majesty the King Bhumibol Adulyadej, as a symbol of the linkage between Thailand and modern communications technology."
-    },
-    {
-      mission_name: "Telstar",
-      mission_id: "F4F83DE",
-      manufacturers: ["SSL"],
-      payload_ids: ["Telstar 19V", "Telstar 18V"],
-      wikipedia: "https://en.wikipedia.org/wiki/Telesat",
-      website: "https://www.telesat.com/",
-      twitter: null,
-      description:
-        "Telstar 19V (Telstar 19 Vantage) is a communication satellite in the Telstar series of the Canadian satellite communications company Telesat. It was built by Space Systems Loral (MAXAR) and is based on the SSL-1300 bus. As of 26 July 2018, Telstar 19V is the heaviest commercial communications satellite ever launched, weighing at 7,076 kg (15,600 lbs) and surpassing the previous record, set by TerreStar-1 (6,910 kg/15230lbs), launched by Ariane 5ECA on 1 July 2009."
-    }
-  ]
-};
+  test("MissionForm renders correctly", ()=>{
+    render <MissionForm />
+  });
+```
+* Discuss what should be tested on the MissionForm.
+
+### Review questions to ask yourself when unit testing
+* Specfic to implementation
+* Deals with specific inputs and returns of pieces of code
+* Be specific TO THE CODE WE ARE WORKING WITH.
+
+### Discuss what kind of tests should be run.
+* Does the component render?
+* Does the component render correctly when isFetchingData is true?
+* Does the component render correctly when isFetchingData is false?
+* When we have a piece of user input, does getData execute.
+
+### Adding Data Props to a component
+* Arrange: Pass in isFetchingData={true} to MissionForm.
+* Act: Get the test that should appear.
+```js
+  const displayText = screen.queryByText(/we are fetching data/i);
+```
+* Assert: test if text is in document.
+```js
+  expect(displayText).toBeInDocument();
+  expect(displayText).not.ToBeNull();
 ```
 
-Now the we are mocking this function, we don't have to wait for the actual async request in our tests, which would take a long time! We should have something like this now:
+### Breakout group for isFetchingData is false.
 
-```jsx
-import React from "react";
-import { render } from "@testing-library/react";
-import { fetchMissions as mockFetchMissions } from "./api/fetchMissions";
-import App from "./App";
+### BREAK
 
-jest.mock("./api/fetchMissions");
-console.log(mockFetchMissions);
+### Introduction to mocks
+* Note that we have two different props, one is a data property, one is function.
+* Introduce that mocks are fake functions.
+* Mocks are placeholders for where functions could be.
+* We will be going through two different types.
+  * Faking a functional prop.
+  * Faking a library call.
 
-test("App fetches missions data and render data", () => {
-  mockFetchMissions.mockResolvedValueOnce(missions);
-
-  render(<App />);
-});
-```
-
-Now let's fire out the event that actually triggers the get request
-
-- import the `fireEvent` function
-- find the "Get data" button, and fire off a click event on it
-
-```jsx
-test("App fetches missions data and render data", () => {
-  mockFetchMissions.mockResolvedValueOnce(missions);
-
-  const { getByText } = render(<App />);
-  const button = getByText(/get data/i);
-  fireEvent.click(button);
-  // Or simply fireEvent.click(getByText(/get data/i));
-});
-```
-
-... now what???
-
-### Testing Async API calls
-
-Now that we have mocked the function, we have to test the component after the API call has returned
-
-1. Breifly explain async/await since we will use that for all async tests
-2. Look at the `App` component (or even better, look at the actuall UI) to see what happens when we click the button.
-
-- First there is a loading message
-- When the data returns, it is displayed
-
-3. Right after the button click, test for the fetching message:
-
-```jsx
-test("App fetches missions data and render data", async () => {
-  mockFetchMissions.mockResolvedValueOnce(missions);
-
-  const { getByText } = render(<App />);
-
-  const button = getByText(/get data/i);
-  fireEvent.click(button);
-
-  getByText(/we are fetching data/i);
-```
-
-4. Now we need to `await` for the API call to return
-
-- import the `wait` function from RTL
-- call `await wait()`
-- make your final assertions.
-
-```jsx
-test("App fetches missions data and render data", async () => {
-  mockFetchMissions.mockResolvedValueOnce(missions);
-
-  const { getByText, queryAllByTestId } = render(<App />);
-
-  const button = getByText(/get data/i);
-  fireEvent.click(button);
-
-  getByText(/we are fetching data/i);
-  await wait();
-  expect(queryAllByTestId("mission")).toHaveLength(2);
-});
-```
-
-#### Possible breakout session if you have enough time
-
-Have students work on testing the `MissionForm` component. This is what a final test could look like:
-
-```jsx
-import React from "react";
-import { render } from "@testing-library/react";
-import MissionForm from "./MissionForm";
-
-test("Mission Form renders correctly", () => {
+### Start building our test
+* Arrange: Build our mockFunction.
+```js
   const mockGetData = jest.fn();
-  const { getByText, queryByText } = render(
-    <MissionForm getData={mockGetData} isFetchingData={false} />
-  );
+  render(<MissionForm getData={mockGetData}>)
+```
+* Act: get the button
+```js
+  const button = screen.getByRole("button);
+  userEvent.click(button);
+```
+* Note that our component fails when we don't pass in mockGetData.
 
-  // test that the button is rendered, and the loading state is not
-  getByText(/get data/i);
-  expect(queryByText(/we are fetching data/i)).toBeNull();
-
-  // line 12 is shorthand for this:
-  // expect(getByText(/get data/i)).toBeInTheDocument();
-});
-
-test("Component trasitions to loading state when isFetchingData is true", () => {
-  const mockGetData = jest.fn();
-  const { getByText, queryByText, rerender } = render(
-    <MissionForm getData={mockGetData} isFetchingData={false} />
-  );
-
-  // test that the button is rendered, and the loading state is not
-  getByText(/get data/i);
-  expect(queryByText(/we are fetching data/i)).toBeNull();
-
-  // re-render the component becuase isFetchingData has been changed to true
-  rerender(<MissionForm getData={mockGetData} isFetchingData={true} />);
-
-  getByText(/we are fetching data/i);
-  expect(queryByText(/get data/i)).toBeNull();
-});
-
-// TODO: add a test to test the transition from the loading state back to the resting state
-// TODO: look through this test file and list out all the functions come from RTL, and all the functions coming from Jest
+### Experiment with our mock
+* Display the mockGetData.
+* Display mockGetData.mock.
+* Demonstrate calls array, passing in a function into the mock and monitoring results, and monitoring parameters passed into a mock.
+* Discuss how to test if our mock was called.
+```js
+  expect(mockGetData.mock.calls.length === 1);
+  expect(mockGetData.mock.calls.length).toBe(1);
+  expect(mockGetData.mock.calls).toHaveLength(1);
+  expect(mockGetData).toHaveBeenCalledTimes(1);
 ```
 
+### BREAK
+
+### Quick review of async calls
+* Note that async is just a simplier way of capturing an async call.
+* Convert our module into async code.
+
+### Next test App.js
+* Add in imports.
+* Add in render without errors test.
+* We are testing that missions will be rendered on the screen
+* Add in basic means to capture missions
+```js
+  render(<App/>);
+  
+  const button = screen.getByRole("button");
+  userEvent.click(button);
+  await wait(()=>{
+    expect(screen.getAllByTestId("mission")).toHaveLength(10);
+  });
+```
+
+### Introduce library mocks (spys)
+* Discuss why it's scary to make a test based on a live api.
+* Note that we are testing the response to the api, thus requiring us to control the api output.
+* Mocks are the answer.
+* Add in the mock import:
+```js
+import {fetchMission as mcokFetchMissions } from './api/fetchMissions';
+jest.mock('./api/fetchMissions);
+```
+* Add mock to our component with whatever needs to be returned from our api.
+* Note the minimum that needs to be in our result and copy the structure.
+```js
+  mockFetchMissions.mockResolvedValueOnce({
+    data: [
+      {mission_name:"Mission 1", mission_id:1},
+      {mission_name:"Mission 2", mission_id:2}
+    ]
+  });
+```
+* Note that our mock function is the same as our old mock function.
+* We want to see what our mock returns.
+```js
+  await waitFor(()=> {
+    expect(missions).toHaveLength(2);
+  });
+```
+
+### BREAK
+
+### Add test for MissionList
+```js
+  import React from 'react';
+  import {render, screen} from '@testing-library/react';
+  import MissionList;
+  ```
+### Make our base rendering test
+* Note that it fails due to the need to props by default
+
+### Introduce rerendering
+* Tests the transition between property changes.
+* Need to get rerender from our MissionList.
+```js
+  const { rerender } = render(<MissionList mission={[]}>)
+```
+* Rerender allow us to render the component with new props.
+```js
+  let missioObjects = screen.queryAllByTestId("mission");
+  expect(missionObjects).toEqual([]);
+```
+* Add in new missions array and test again.
+```js
+  rerender(<MissionsList missions={missions}/>);
+  missionObjects = screen.queryByTestId("mission");
+  expect(missionObject).toHaveLength(2);
+```
 
 ### Module Project Review
 * [Testing TV Show](https://github.com/LambdaSchool/React-Testing-TV-Show)

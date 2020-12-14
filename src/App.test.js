@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, wait } from "@testing-library/react";
 import App from './App';
 
 import { fetchMissions as mockFetchMissions} from './api/fetchMissions';
@@ -21,9 +21,8 @@ test('fetches and renders mission data', async ()=> {
 
     const button = screen.getByRole("button");
     fireEvent.click(button);
+    
+    await wait();
 
-    await waitFor(()=>{
-        const missions = screen.getAllByTestId("mission");
-        expect(missions).toHaveLength(2);
-    });
+    expect(screen.getAllByTestId("mission")).toHaveLength(2);
 });

@@ -1,7 +1,6 @@
 import React from "react";
 
 const MissionsList = props => {
-  console.log(props.missions);
   return (
     <section className="missions-list">
       {props.error ? (
