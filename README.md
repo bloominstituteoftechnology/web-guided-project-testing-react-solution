@@ -281,7 +281,18 @@ https://github.com/LambdaSchool/React-Testing-TV-Show
 Here is a review of today's material.
 
 Key Terminology
-* 📝 *term* - [description](#)
+* 📝 *mock functions* - [Function placeholders use to monitor function execution within a test.](https://jestjs.io/docs/en/mock-functions.html)
+* 📝 *mock spys* - [Function placeholders that mock the execution of external libraries](https://silvenon.com/blog/mocking-with-jest/functions)
+* 📝 *rerender* - [A react testing library module use to render a component more then once in a test.](https://testing-library.com/docs/react-testing-library/api/#rerender)
+* 📝 *async / await* - [A javascript syntax that allows simpler, cleaner async code.](https://javascript.info/async-await)
+* 📝 *wait / waitFor* - [React testing library modules that allow a component test to wait until an async call or state chance occurs.](https://testing-library.com/docs/dom-testing-library/api-async/)
 
 Key Concepts
-* 📝 *concept* - [description](#)
+* 📝 *unit testing* - [description](https://www.guru99.com/unit-testing-guide.html)
+* 📝 *integration testing* - [description](https://www.edureka.co/blog/what-is-integration-testing-a-simple-guide-on-how-to-perform-integration-testing/)
+
+Reference Materials
+* 📝 [React Testing Library query cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet/)
+* 📝 [Jest expect functions](https://jestjs.io/docs/en/expect.html)
+* 📝 [Jest Mock functions reference](https://www.w3resource.com/jest/mock-functions-api-reference.php)
+
