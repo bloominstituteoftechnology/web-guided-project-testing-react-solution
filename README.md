@@ -24,7 +24,7 @@ By the end of this module, learners should be able to:
 ----
 
 ## Guided Project Slack Message
-> 1. Clone without forking the following repo: *base guided project repo*
+> 1. Clone without forking the following repo: https://github.com/LambdaSchool/web-guided-project-testing-react
 > 2. Navigate into both the root folder and run npm i to load dependences.
 >
 > :point_right: Technical issues spinning up the project? Please head over to the help channel!
