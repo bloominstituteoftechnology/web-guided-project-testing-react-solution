@@ -19,7 +19,7 @@ By the end of this module, learners should be able to:
 * 🐙 [Guided Project Starter](https://github.com/LambdaSchool/web-guided-project-testing-react)
 * 🐙 [Guided Project Solution](https://github.com/LambdaSchool/web-guided-project-testing-react-solution)
 * 🐙 [Module Project](https://github.com/LambdaSchool/React-Testing-TV-Show)
-* 🐙 [Module Project Solution](#)
+* 🐙 [Module Project Solution](https://github.com/LambdaSchool/web-module-project-testing-react)
 
 ----
 
@@ -41,8 +41,10 @@ By the end of this module, learners should be able to:
 > _______________________________________________________
 > Zoom Link : *insert zoom link*
 > Slido: *insert slido link*
+>
 > Guided Project: https://github.com/LambdaSchool/web-guided-project-testing-react
-> Module Project: https://github.com/LambdaSchool/React-Testing-TV-Show
+>
+> Module Project: https://github.com/LambdaSchool/web-module-project-testing-react
 
 ----
 
@@ -273,10 +275,10 @@ jest.mock('./api/fetchMissions);
 
 ## After Class Message
 Hope you all enjoyed today's guided Lesson!
-A reminder if that office hours are from 3:30 - 4:30 Lambda Time. Don't forget to complete the days Check for Understanding and Pulse Checks! 
+A reminder if that office hours are from 2:30 - 3:30 Lambda Time. Don't forget to complete the days Check for Understanding and Pulse Checks! 
 
 Module Project
-https://github.com/LambdaSchool/React-Testing-TV-Show
+https://github.com/LambdaSchool/web-module-project-testing-react
 
 Here is a review of today's material.
 

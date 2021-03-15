@@ -1,5 +1,5 @@
 import React from "react";
-import { render,screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import MissionsList from "./MissionsList";
 
 // TODO: test the mounting state for the component
