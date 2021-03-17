@@ -18,19 +18,21 @@ By the end of this module, learners should be able to:
 ## Instructor Resources
 * 🐙 [Guided Project Starter](https://github.com/LambdaSchool/web-guided-project-testing-react)
 * 🐙 [Guided Project Solution](https://github.com/LambdaSchool/web-guided-project-testing-react-solution)
-* 🐙 [Module Project](https://github.com/LambdaSchool/React-Testing-TV-Show)
-* 🐙 [Module Project Solution](https://github.com/LambdaSchool/web-module-project-testing-react)
+* 🐙 [Module Project](https://github.com/LambdaSchool/web-module-project-testing-react)
+* 🐙 [Module Project Solution](https://github.com/LambdaSchool/web-module-project-testing-react-solution)
 
 ----
 
 ## Guided Project Slack Message
+> **Welcome to Unit 3.**
 > 1. Clone without forking the following repo: https://github.com/LambdaSchool/web-guided-project-testing-react
 > 2. Navigate into both the root folder and run npm i to load dependences.
 >
 > :point_right: Technical issues spinning up the project? Please head over to the help channel!
+>
 > :point_right: If you fall behind during lecture and wish to catch up:
 >
-> git fetch && git reset --hard origin/lecture
+> `git fetch && git reset --hard origin/lecture`
 >
 > :point_right: Slido event: *insert slido link*
 
@@ -267,7 +269,7 @@ jest.mock('./api/fetchMissions);
 ```
 
 ### Module Project Review
-* [Testing TV Show](https://github.com/LambdaSchool/React-Testing-TV-Show)
+* [Testing TV Show](https://github.com/LambdaSchool/web-module-project-testing-react)
 
 ## Breakout Slack Messages
 
@@ -277,8 +279,7 @@ jest.mock('./api/fetchMissions);
 Hope you all enjoyed today's guided Lesson!
 A reminder if that office hours are from 2:30 - 3:30 Lambda Time. Don't forget to complete the days Check for Understanding and Pulse Checks! 
 
-Module Project
-https://github.com/LambdaSchool/web-module-project-testing-react
+Module Project: https://github.com/LambdaSchool/web-module-project-testing-react
 
 Here is a review of today's material.
 
