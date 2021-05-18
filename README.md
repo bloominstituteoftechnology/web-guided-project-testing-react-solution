@@ -284,8 +284,11 @@ jest.mock('./api/fetchMissions);
 
 ### Module Materials
 Module Project: https://github.com/LambdaSchool/web-module-project-testing-react
+
 GP Slides: https://docs.google.com/presentation/d/1Z4obtWznnMDpVcRQ0A5g9rn2HLpRuva497SfaTSPaWs/edit?usp=sharing
+
 Thursday's Module Project Review: https://www.loom.com/share/7102e4c7b8f3427b916e6b4a9fb8b31d PW: i31J4k
+
 Alternative GP Video: [Dustin Myers](https://youtu.be/KmCecD3z6HI) | [Josh Jacobson](https://youtu.be/w_w5Vosl_Ow)| [Warren C. Longmire](https://youtu.be/_YOicxJJpqU) | [Brian Kirkby](https://youtu.be/YC1opaqs6WM)
 
 ### Key Terminology
