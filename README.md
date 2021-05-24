@@ -39,10 +39,11 @@ By the end of this module, learners should be able to:
 ----
 
 ## Guided Project Zoom Invitation:
-> **Unit 3 | Sprint 3 | Module 1: Unit Testing React Componentse**
+> **Unit 3 | Sprint 3 | Module 1: Unit Testing React Components**
 > _______________________________________________________
-> Zoom Link : *insert zoom link*
-> Slido: *insert slido link*
+> Zoom Link : https://lambdaschool.zoom.us/my/unit3withwarren
+>
+> Slido: https://app.sli.do/event/msea4w8q
 >
 > Guided Project: https://github.com/LambdaSchool/web-guided-project-testing-react
 >
