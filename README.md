@@ -34,7 +34,7 @@ By the end of this module, learners should be able to:
 >
 > `git fetch && git reset --hard origin/lecture`
 >
-> :point_right: Slido event: *insert slido link*
+> :point_right: Slido event: https://app.sli.do/event/msea4w8q
 
 ----
 
@@ -307,4 +307,4 @@ Alternative GP Video: [Dustin Myers](https://youtu.be/KmCecD3z6HI) | [Josh Jacob
 * 📝 [React Testing Library query cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet/)
 * 📝 [Jest expect functions](https://jestjs.io/docs/en/expect.html)
 * 📝 [Jest Mock functions reference](https://www.w3resource.com/jest/mock-functions-api-reference.php)
-
+* 📝 [User Event Testing Reference](https://testing-library.com/docs/ecosystem-user-event/)
