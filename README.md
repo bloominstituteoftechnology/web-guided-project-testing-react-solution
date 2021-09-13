@@ -300,8 +300,8 @@ Alternative GP Video: [Dustin Myers](https://youtu.be/KmCecD3z6HI) | [Josh Jacob
 * 📝 *wait / waitFor* - [React testing library modules that allow a component test to wait until an async call or state chance occurs.](https://testing-library.com/docs/dom-testing-library/api-async/)
 
 ### Key Concepts
-* 📝 *unit testing* - [description](https://www.guru99.com/unit-testing-guide.html)
-* 📝 *integration testing* - [description](https://www.edureka.co/blog/what-is-integration-testing-a-simple-guide-on-how-to-perform-integration-testing/)
+* 📝 *unit testing* - [Testing the implementation of a component/group of components](https://www.guru99.com/unit-testing-guide.html)
+* 📝 *integration testing* - [Testing the user behavior of a component/group of components](https://www.edureka.co/blog/what-is-integration-testing-a-simple-guide-on-how-to-perform-integration-testing/)
 
 ### Reference Materials
 * 📝 [React Testing Library query cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet/)
