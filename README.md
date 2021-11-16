@@ -1,8 +1,8 @@
 # Sprint 3 - Module 1 : Unit Testing React Components
 
-## [Training Kit](https://github.com/LambdaSchool/Full-Stack-Web-Curriculum/tree/main/03-WebApplications-II/Sprint%2003%20-%20Advanced%20Web%20Applications/Module%201%20-%20Testing%20React)
+## [Training Kit](https://github.com/BloomInstituteOfTechnology/Full-Stack-Web-Curriculum/tree/main/03-WebApplications-II/Sprint%2003%20-%20Advanced%20Web%20Applications/Module%201%20-%20Testing%20React)
 
-### [Previous Lesson Plan](https://github.com/LambdaSchool/Space-X-Web-GuidedProject-Solution)
+### [Previous Lesson Plan](https://github.com/BloomInstituteOfTechnology/Space-X-Web-GuidedProject-Solution)
 
 ----
 
@@ -16,16 +16,16 @@ By the end of this module, learners should be able to:
 ----
 
 ## Instructor Resources
-* 🐙 [Guided Project Starter](https://github.com/LambdaSchool/web-guided-project-testing-react)
-* 🐙 [Guided Project Solution](https://github.com/LambdaSchool/web-guided-project-testing-react-solution)
-* 🐙 [Module Project](https://github.com/LambdaSchool/web-module-project-testing-react)
-* 🐙 [Module Project Solution](https://github.com/LambdaSchool/web-module-project-testing-react-solution)
+* 🐙 [Guided Project Starter](https://github.com/BloomInstituteOfTechnology/web-guided-project-testing-react)
+* 🐙 [Guided Project Solution](https://github.com/BloomInstituteOfTechnology/web-guided-project-testing-react-solution)
+* 🐙 [Module Project](https://github.com/BloomInstituteOfTechnology/web-module-project-testing-react)
+* 🐙 [Module Project Solution](https://github.com/BloomInstituteOfTechnology/web-module-project-testing-react-solution)
 
 ----
 
 ## Guided Project Slack Message
 > **Welcome to Unit 3.**
-> 1. Clone without forking the following repo: https://github.com/LambdaSchool/web-guided-project-testing-react
+> 1. Clone without forking the following repo: https://github.com/BloomInstituteOfTechnology/web-guided-project-testing-react
 > 2. Navigate into both the root folder and run npm i to load dependences.
 >
 > :point_right: Technical issues spinning up the project? Please head over to the help channel!
@@ -45,9 +45,9 @@ By the end of this module, learners should be able to:
 >
 > Slido: https://app.sli.do/event/msea4w8q
 >
-> Guided Project: https://github.com/LambdaSchool/web-guided-project-testing-react
+> Guided Project: https://github.com/BloomInstituteOfTechnology/web-guided-project-testing-react
 >
-> Module Project: https://github.com/LambdaSchool/web-module-project-testing-react
+> Module Project: https://github.com/BloomInstituteOfTechnology/web-module-project-testing-react
 
 ----
 
@@ -270,7 +270,7 @@ jest.mock('./api/fetchMissions);
 ```
 
 ### Module Project Review
-* [Testing TV Show](https://github.com/LambdaSchool/web-module-project-testing-react)
+* [Testing TV Show](https://github.com/BloomInstituteOfTechnology/web-module-project-testing-react)
 
 ## Breakout Slack Messages
 
@@ -284,7 +284,7 @@ jest.mock('./api/fetchMissions);
 **Here is a review of today's material.**
 
 ### Module Materials
-Module Project: https://github.com/LambdaSchool/web-module-project-testing-react
+Module Project: https://github.com/BloomInstituteOfTechnology/web-module-project-testing-react
 
 GP Slides: https://docs.google.com/presentation/d/1Z4obtWznnMDpVcRQ0A5g9rn2HLpRuva497SfaTSPaWs/edit?usp=sharing
 
